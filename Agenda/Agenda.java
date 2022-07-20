@@ -1,4 +1,4 @@
-package lista1_Exercicio02;
+package Agenda;
 
 public class Agenda {
     private String nome;

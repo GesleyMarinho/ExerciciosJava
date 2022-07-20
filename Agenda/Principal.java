@@ -1,4 +1,4 @@
-package lista1_Exercicio02;
+package Agenda;
 
 import java.util.ArrayList;
 import java.util.Scanner;
