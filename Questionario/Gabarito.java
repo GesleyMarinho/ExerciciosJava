@@ -1,21 +1,16 @@
 package Questionario;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class Gabarito {
 
-    String gabarito[] = {"A", "B"};
+    List<Character> gabarito = Arrays.asList('A','B');
 
-    public char respostaQuestao(Prova prova ,int numeroQuestao) {
-
-        for (int i=0; i < gabarito.length;i++){
-
-            if(gabarito[]){
-
-            }
-            //System.out.printf(""+gabarito[i]);
-        }
-
-        return 0;
-
+    public char respostaQuestao(int numeroQuestao) {
+        char resposta;
+        resposta = gabarito.get(numeroQuestao-1);
+        return resposta;
     }
 
 }
