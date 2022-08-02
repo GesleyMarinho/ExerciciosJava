@@ -13,6 +13,6 @@ public class MainProva {
 
         System.out.printf("Qual questão deseja saber se está correto : ");
         questao = ler.nextInt();
-        System.out.printf(""+ gabarito.respostaQuestao(questao));
+        System.out.printf("A resposta da Questão "+questao +" é : "+ gabarito.respostaQuestao(questao));
     }
 }
