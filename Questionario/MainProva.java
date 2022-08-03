@@ -7,12 +7,14 @@ public class MainProva {
         Scanner ler = new Scanner(System.in);
         int questao;
 
-        Prova prova = new Prova("A", "C");
-
+        Prova prova = new Prova('A', 'B');
+        Prova prova1 = new Prova('A','D');
         Gabarito gabarito = new Gabarito();
 
-        System.out.printf("Qual questão deseja saber se está correto : ");
+        /*System.out.printf("Qual questão deseja saber se está correto : ");
         questao = ler.nextInt();
-        System.out.printf(""+ gabarito.respostaQuestao(questao));
+        System.out.println("A resposta é : "+ gabarito.respostaQuestao(questao));*/
+
+        System.out.println("Quantidade de Acertos : "+ gabarito.acertos(prova1,prova));
     }
 }
