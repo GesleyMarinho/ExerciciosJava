@@ -8,13 +8,13 @@ public class MainProva {
         int questao;
 
         Prova prova = new Prova('A', 'B');
-        Prova prova1 = new Prova('A','D');
+
         Gabarito gabarito = new Gabarito();
 
         /*System.out.printf("Qual questão deseja saber se está correto : ");
         questao = ler.nextInt();
         System.out.println("A resposta é : "+ gabarito.respostaQuestao(questao));*/
 
-        System.out.println("Quantidade de Acertos : "+ gabarito.acertos(prova1,prova));
+        System.out.println("Quantidade de Acertos : "+ gabarito.acertos(prova));
     }
 }
