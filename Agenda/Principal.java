@@ -13,7 +13,6 @@ public class Principal {
 
         Agendas agendas = new Agendas();
 
-
         do {
 
             System.out.print("1- Listar Agenda \n" +

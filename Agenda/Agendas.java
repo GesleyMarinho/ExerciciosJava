@@ -11,9 +11,9 @@ public class Agendas {
     public ArrayList<Agenda> preencherLista() {
 
         ArrayList<Agenda> agendaList = new ArrayList<>();
-
         Scanner ler = new Scanner(System.in);
         String cont = "S";
+
         do {
 
             Agenda agenda = new Agenda();
