@@ -1,6 +1,5 @@
 package MediaMasculinaFeminina;
 
-import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -43,7 +42,7 @@ public class MetodosouFuncoes {
 
     }
 
-    public ArrayList<Dados> maiorAltura(List<Dados> dadosList) {
+    public void maiorAltura() {
 
         double maiorAltura = 0;
 
@@ -56,6 +55,7 @@ public class MetodosouFuncoes {
 
         }
         System.out.printf("Maior Altura " + maiorAltura);
+
 
 
     }

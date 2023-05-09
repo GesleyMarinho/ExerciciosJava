@@ -29,7 +29,7 @@ public class Main {
             if (op == 1) {
                 //dadosList = metodosouFuncoes.maiorAltura(dadosList);
 
-                dadosList = metodosouFuncoes.maiorAltura(dadosList);
+                dadosList = metodosouFuncoes.maiorAltura();
 
             } else if (op == 2) {
                 //metodosouFuncoes.menorAltura(dadosList);
