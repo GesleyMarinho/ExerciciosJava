@@ -36,6 +36,14 @@ public class Agendas {
         return agendaList;
     }
 
+    public void listaAgenda(List<Agenda> agendaList) {
+
+        //for (int i=0; i < agendaList.size();i++){
+        for (Agenda agenda : agendaList) {
+            System.out.println(" Nome " + agenda.getNome() + " Idade = " + agenda.getIdade() + " Altura = " + agenda.getAltura());
+        }
+    }
+
     public void remover(List<Agenda> agendaList, String nome) {
         for (int i = 0; i < agendaList.size(); i++) {
             if (agendaList.get(i).getNome().equalsIgnoreCase(nome)) {
@@ -48,12 +56,7 @@ public class Agendas {
         System.out.println("O Nome " + nome + " não está na lista ");
     }
 
-    public void listaAgenda(List<Agenda> agendaList) {
 
-        for (Agenda agenda : agendaList) {
-            System.out.println(" Nome " + agenda.getNome() + " Idade = " + agenda.getIdade() + " Altura = " + agenda.getAltura());
-        }
-    }
 
     public void pesquisaAgenda(List<Agenda> agendaList, String nome) {
 

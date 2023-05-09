@@ -1,3 +1,5 @@
+package Carro;
+
 public class Carro {
     String marca ; // Marca do carro
     double velocidadeMax ; // velocidade máxima em que o carro pode chegar
@@ -43,7 +45,7 @@ public class Carro {
     }
 
     void carroDesacelerar (int valor2){
-        if(this.ligado == false){
+        if(!this.ligado){
 
             System.out.println("O seu CARRO está DESLIGADO!!! você não pode desacelerar ele. ");
         }
