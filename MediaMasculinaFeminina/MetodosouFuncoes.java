@@ -25,7 +25,7 @@ public class MetodosouFuncoes {
 
             dadosList.add(dados);
 
-            System.out.print("Deseja Continuar Preenchimento a AGENDA S/N :");
+            System.out.print("Deseja Continuar Preenchimento da Lista S/N :");
             cont = ler.next();
 
         } while (cont.equalsIgnoreCase("S"));
@@ -37,16 +37,16 @@ public class MetodosouFuncoes {
         //for (int i = 0; i < dadosList.size(); i++) {
         for (Dados dados : dadosList) {
 
-            System.out.printf("Altura " + dados.getAltura() + " Sexo: " + dados.getSexo());
+            System.out.printf("Altura " + dados.getAltura() + " Sexo: " + dados.getSexo() + "\n");
         }
 
     }
 
-    public void maiorAltura() {
+    public Double maiorAltura(ArrayList<Dados> dadosList) {
 
         double maiorAltura = 0;
 
-        for (int i = 0; i <= dadosList.size(); i++) {
+        for (int i = 0; i < dadosList.size(); i++) {
 
             if (dadosList.get(i).getAltura() > maiorAltura) {
 
@@ -54,17 +54,15 @@ public class MetodosouFuncoes {
             }
 
         }
-        System.out.printf("Maior Altura " + maiorAltura);
-
-
-
+        //System.out.printf("Maior Altura " + maiorAltura);
+        return maiorAltura;
     }
 
-    public ArrayList<Dados> menorAltura(List<Dados> dadosList) {
+    public double menorAltura(ArrayList<Dados> dadosList) {
 
         double menorAltura = 9999;
 
-        for (int i = 0; i <= dadosList.size(); i++) {
+        for (int i = 0; i < dadosList.size(); i++) {
 
             if (dadosList.get(i).getAltura() < menorAltura) {
 
@@ -72,11 +70,11 @@ public class MetodosouFuncoes {
             }
 
         }
-        System.out.printf(" Menor Altura " + menorAltura);
 
+        return menorAltura;
     }
 
-    public void mediaAlturaHomens(List<Dados> dadosList) {
+    public double mediaAlturaHomens(List<Dados> dadosList) {
         int contM = 0;
         double mediaaltura = 0, somaAltura = 0;
         for (int i = 0; i < dadosList.size(); i++) {
@@ -89,14 +87,14 @@ public class MetodosouFuncoes {
             mediaaltura = somaAltura / contM;
 
         }
-        System.out.printf("Media de Altura Homens " + mediaaltura);
+        return mediaaltura;
 
     }
 
-    public void qtMulheres(List<Dados> dadosList) {
+    public int qtMulheres(List<Dados> dadosList) {
         int contM = 0;
 
-        for (int i = 0; i <= dadosList.size(); i++) {
+        for (int i = 0; i < dadosList.size(); i++) {
 
             if (dadosList.get(i).getSexo().equalsIgnoreCase("F")) {
                 contM++;
@@ -104,7 +102,22 @@ public class MetodosouFuncoes {
 
         }
 
-        System.out.printf("Quantidade de mulheres " + contM);
+        return contM;
 
+    }
+
+    public int posicaoAltura(ArrayList<Dados> dadosList) {
+
+        int posicao =0;
+        double maior=0;
+
+        for (int i=0; i< dadosList.size(); i++){
+            if(dadosList.get(i).getAltura() > maior ){
+                posicao = i;
+            }
+        }
+
+        //em qual posição está maior altura;
+        return posicao;
     }
 }
