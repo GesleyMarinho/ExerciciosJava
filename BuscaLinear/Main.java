@@ -1,4 +1,5 @@
 package BuscaLinear;
+
 import java.util.Scanner;
 
 /*
@@ -27,15 +28,12 @@ public class Main {
         int valor = ler.nextInt();
         valor = buscalinear(numeros, valor);
 
-
         if (valor != -1) {
             System.out.printf("Valor encontrado na posição " + valor);
         } else {
             System.out.printf("Valor não encontrado " + valor);
         }
-
     }
-
     public static int buscalinear(int[] numeros, int valor) {
         int x = 0;
         for (int i = 1; i < numeros.length; i++) {
@@ -43,8 +41,6 @@ public class Main {
                 return i;
             }
         }
-
         return -1;
     }
-
 }
