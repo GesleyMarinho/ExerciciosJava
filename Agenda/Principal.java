@@ -11,7 +11,7 @@ public class Principal {
 
         ArrayList<Agenda> agendaList = new ArrayList<>();
 
-        Agendas agendas = new Agendas();
+        Metodos agendas = new Metodos();
 
         do {
 
