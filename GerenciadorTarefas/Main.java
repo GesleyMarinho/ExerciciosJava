@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 /*
-istema de Gerenciamento de Tarefas:
+Sistema de Gerenciamento de Tarefas:
 Crie um sistema simples de gerenciamento de tarefas em linha de comando. O programa deve permitir ao usuário adicionar tarefas,
 listar todas as tarefas, marcar uma tarefa como concluída e remover uma tarefa.
 
