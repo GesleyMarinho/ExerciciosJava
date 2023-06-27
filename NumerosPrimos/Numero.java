@@ -16,13 +16,6 @@ public class Numero {
     }
 
     public void calculeNumerosPrimos(int num) {
-        /*//  int a = 0;
-        for (int i = 1; i < num; i++) {
-            if (num % i == 0) {
-
-            }
-            System.out.printf(" Número Primo : " + num);
-        }*/
 
         for (int i = 2; i <= num; i++) {
             boolean primo = true;
@@ -37,5 +30,24 @@ public class Numero {
             }
 
         }
+    }
+
+    public boolean Eprimo(int num) {
+
+        int result = 0;
+
+        for (int i = 2; i <= num / 2; i++) {
+            if (num % i == 0) {
+                result++;
+                break;
+            }
+        }
+
+        if (result == 0) {
+            return true;
+        } else {
+            return false;
+        }
+
     }
 }

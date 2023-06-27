@@ -65,9 +65,62 @@ public class Velha {
         }
     }
 
-    public int  verificarGanhador(String matriz[][]){
-        return 0;
+    public int verificarGanhador(String matriz[][]) {
+        int resultado = 0;
+        boolean vitoriaX = false;
+        boolean vitoriaO = false;
+
+        //VERIFICAR LINHAS
+        for (int i = 0; i < matriz.length; i++) {
+            if (matriz[i][0].equals("X") && matriz[i][1].equals("X") && matriz[i][2].equals("X")) {
+                vitoriaX = true;
+            } else if (matriz[i][0].equals("O") && matriz[i][1].equals("O") && matriz[i][2].equals("O")) {
+                vitoriaO = true;
+            }
+        }
+
+        //VERIFICAR COLUNAS
+        for (int j = 0; j < matriz.length; j++) {
+            if (matriz[0][j].equals("X") && matriz[1][j].equals("X") && matriz[2][j].equals("X")) {
+                vitoriaX = true;
+            } else if (matriz[0][j].equals("O") && matriz[1][j].equals("O") && matriz[2][j].equals("O")) {
+                vitoriaO = true;
+            }
+        }
+
+        // Verificar diagonais
+        if ((matriz[0][0].equals("X") && matriz[1][1].equals("X") && matriz[2][2].equals("X")) ||
+                (matriz[2][0].equals("X") && matriz[1][1].equals("X") && matriz[0][2].equals("X"))) {
+            vitoriaX = true;
+        } else if ((matriz[0][0].equals("O") && matriz[1][1].equals("O") && matriz[2][2].equals("O")) ||
+                (matriz[2][0].equals("O") && matriz[1][1].equals("O") && matriz[0][2].equals("O"))) {
+            vitoriaO = true;
+        }
+
+        if (vitoriaX && !vitoriaO) {
+            resultado = 1;
+        } else if (!vitoriaX && vitoriaO) {
+            resultado = 2;
+        } else if (!vitoriaX && !vitoriaO) {
+            boolean empate = true;
+
+            for (int i = 0; i < matriz.length; i++) {
+                for (int j = 0; j < matriz.length; j++) {
+
+                    if (!matriz[i][j].equals("X") && !matriz[i][j].equals("O")) {
+                        empate = false;
+                        break;
+                    }
+                    if (!empate) {
+                        break;
+                    }
+                }
+                if (empate) {
+                    resultado = 3;
+                }
+            }
+        }
+
+        return resultado;
     }
-
-
 }

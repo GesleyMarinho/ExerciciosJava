@@ -2,6 +2,19 @@ package JogoDaVelha;
 
 import java.util.Random;
 import java.util.Scanner;
+/*
+Jogo da Velha:
+Crie um programa que permita que dois jogadores joguem o famoso jogo da velha. O programa deve exibir o tabuleiro e solicitar
+aos jogadores que façam suas jogadas alternadamente. O programa deve verificar se houve um vencedor ou se houve um empate e exibir o resultado final.
+Você pode implementar as seguintes funcionalidades:
+
+Exibir o tabuleiro: O programa deve exibir o tabuleiro do jogo da velha com as posições numeradas.
+Fazer uma jogada: O programa deve solicitar ao jogador que faça sua jogada, informando a posição desejada no tabuleiro.
+Verificar o resultado: O programa deve verificar se houve um vencedor ou um empate após cada jogada.
+Você pode usar uma matriz para representar o tabuleiro e implementar as funcionalidades usando classes, métodos e estruturas de controle de fluxo.
+
+Exemplo de interação do programa:
+ */
 
 public class Main {
     public static void main(String[] args) {
@@ -15,10 +28,8 @@ public class Main {
 
             String[][] matriz = new String[3][3];
 
-
             String nome1 = "Gesley";
             String nome2 = "Dumar";
-
 
             jogador.setJogador1(nome1);
             System.out.printf("\nQual o nome do Primeiro jogador: " + jogador.getJogador1());
@@ -41,11 +52,10 @@ public class Main {
             String simbolo2 = "O";
             if (jogadorVencedor == 1) {
                 System.out.printf("\nJogador 1 Ganhou e irá começar !");
-                //simbolo1 = "X";
             }
             if (jogadorVencedor == 2) {
                 System.out.printf("\nJogador  2 Ganhou e irá começar !");
-                //simbolo2 = "G";
+
             } else {
                 System.out.printf("\nEmpate !");
                 matriz = new String[3][3];
@@ -76,13 +86,16 @@ public class Main {
                 int resultado = velha.verificarGanhador(matriz);
 
                 if (resultado == 1) {
-                    System.out.println("Jogador 1 venceu!");
+                    System.out.println("\nJogador 1 venceu!");
+                    jogoEmAndamento = false;
                     break;
                 } else if (resultado == 2) {
-                    System.out.println("Jogador 2 venceu!");
+                    System.out.println("\nJogador 2 venceu!");
+                    jogoEmAndamento = false;
                     break;
                 } else if (resultado == 3) {
-                    System.out.println("Empate! O jogo terminou sem vencedor.");
+                    System.out.println("\nEmpate! O jogo terminou sem vencedor.");
+                    jogoEmAndamento = false;
                     break;
                 }
             }
