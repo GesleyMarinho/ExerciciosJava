@@ -38,7 +38,7 @@ public class Metodos {
 
     public void listaAgenda(List<Agenda> agendaList) {
 
-        //for (int i=0; i < agendaList.size();i++){
+
         for (Agenda agenda : agendaList) {
             System.out.println(" Nome " + agenda.getNome() + " Idade = " + agenda.getIdade() + " Altura = " + agenda.getAltura());
         }
