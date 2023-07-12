@@ -11,6 +11,7 @@ public class Main {
 
         Time time = new Time();
         Tabela tabela = new Tabela();
+        List<Tabela> resultados = new ArrayList<>();
 
         List<Time> nomeTimesList = new ArrayList<>();
 
@@ -24,23 +25,23 @@ public class Main {
                     "Qual a opção desejada: ");
             int op = ler.nextInt();
 
-            if(op ==1){
+            if (op == 1) {
                 nomeTimesList = time.adicionarTime();
-            } else if (op==2) {
+            } else if (op == 2) {
                 System.out.printf("Qual o time deseja remover ");
                 String removerTime = ler.next();
-                time.removerTimes(nomeTimesList,removerTime);
-            } else if (op== 3) {
+                time.removerTimes(nomeTimesList, removerTime);
+            } else if (op == 3) {
                 time.listarTimes(nomeTimesList);
-            } else if (op==4) {
+            } else if (op == 4) {
                 // Editar Times
                 // Melhorar essa idea de editar o time
-            }else {
-               // opção inválida
+            } else {
+                // opção inválida
             }
 
 
-            System.out.printf("\nDeseja Continuar no Menu Principal (S/N)");
+            System.out.printf("\nDeseja Continuar no Menu Principal (S/N): ");
             cont = ler.next();
 
         } while (cont.equalsIgnoreCase("S"));
