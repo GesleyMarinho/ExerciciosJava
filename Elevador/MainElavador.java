@@ -1,6 +1,7 @@
 package Elevador;
 
 import java.util.Scanner;
+
 // Finalizado
 public class MainElavador {
     public static void main(String[] args) {
@@ -15,8 +16,8 @@ public class MainElavador {
         do {
 
             System.out.print("Menu \n" +
-                    "1- Subir  Elevador \n" +
-                    "2- Descer  Elevador \n" +
+                    "1- Subir Elevador \n" +
+                    "2- Descer Elevador \n" +
                     "3- Sair Pessoas \n" +
                     "4- Entrar Pessoas \n" +
                     "5- Verificar o Andar\n" +
