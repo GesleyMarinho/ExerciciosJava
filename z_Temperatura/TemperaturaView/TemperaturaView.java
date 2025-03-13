@@ -13,7 +13,7 @@ public class TemperaturaView {
         System.out.println("4 - Exibir a Maior e a menor temperatura");
         System.out.println("5 - Media Temperatura");
         System.out.println("6 - Sair");
-        System.out.printf("Qual a opção: ");
+        System.out.printf("Qual a opção : ");
         return scanner.nextInt();
     }
 
