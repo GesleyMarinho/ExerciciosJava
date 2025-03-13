@@ -1,7 +1,8 @@
-package EstacionamentoController;
+package z_Estacionamento.src.EstacionamentoController;
 
-import EstacionamentoModel.EstacionamentoModel;
+
 import EstacionamentoView.EstacionamentoView;
+import z_Estacionamento.src.EstacionamentoModel.EstacionamentoModel;
 
 import java.util.Scanner;
 

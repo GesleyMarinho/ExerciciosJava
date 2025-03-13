@@ -1,4 +1,4 @@
-package Estacionamento;
+package z_Estacionamento.src.EstacionamentoModel;
 
 import java.util.Date;
 

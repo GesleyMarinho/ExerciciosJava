@@ -1,6 +1,4 @@
-package EstacionamentoModel;
-
-import Estacionamento.Estacionamento;
+package z_Estacionamento.src.EstacionamentoModel;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

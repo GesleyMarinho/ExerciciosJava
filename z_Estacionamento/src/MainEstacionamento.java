@@ -1,6 +1,10 @@
-import EstacionamentoController.EstacionamentoController;
-import EstacionamentoModel.EstacionamentoModel;
+package z_Estacionamento.src;
+
+
+
 import EstacionamentoView.EstacionamentoView;
+import z_Estacionamento.src.EstacionamentoController.EstacionamentoController;
+import z_Estacionamento.src.EstacionamentoModel.EstacionamentoModel;
 
 public class MainEstacionamento {
     public static void main(String[] args) {
