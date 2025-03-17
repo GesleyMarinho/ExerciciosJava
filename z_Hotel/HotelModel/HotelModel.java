@@ -4,110 +4,79 @@ package z_Hotel.HotelModel;
 import z_Hotel.HotelView.HotelView;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
 public class HotelModel {
-    private List<String> nomeHospedes;
-    private List<Date> dataReservas;
-    private static final int total_Quartos = 10;
-    private List<Boolean> quartosDisponiveis;
-
+    private List<Quarto> quartos;
+    private List<Reserva> reservas;
     private HotelView hotelView;
     Scanner scanner = new Scanner(System.in);
     SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
 
     public HotelModel(HotelView hotelView) {
         this.hotelView = hotelView;
-        this.quartosDisponiveis = new ArrayList<>();
-        this.nomeHospedes = new ArrayList<>();
-        this.dataReservas = new ArrayList<>();
+        this.quartos = new ArrayList<>();
+        this.reservas = new ArrayList<>();
 
-        for (int i = 1; i <= total_Quartos; i++) {
-            quartosDisponiveis.add(true);
-            nomeHospedes.add(null);
-            dataReservas.add(null);
+        // Criando 10 quartos com capacidade aleatória entre 1 e 4 pessoas
+        for (int i = 1; i <= 10; i++) {
+            quartos.add(new Quarto(i, (int) (Math.random() * 4) + 1));
         }
     }
-
     public void listarQuartos() {
-        hotelView.mensagem("Quartos Disponiveis");
-        for (int i = 0; i < total_Quartos; i++) {
-            if (quartosDisponiveis.get(i)) {
-                hotelView.mensagem(" O Quarto " + (i + 1) + " está disponivel");
-            } else {
-                hotelView.mensagem(" O Quarto " + (i + 1) + " está indisponivel");
+        hotelView.mensagem("Quartos Disponíveis:");
+        for (Quarto quarto : quartos) {
+            if (quarto.isDisponivel()) {
+                hotelView.mensagem("Quarto " + quarto.getNumero() + " (Capacidade: " + quarto.getCapacidade() + ")");
             }
         }
     }
 
     public void fazerReservas(String nome, int numeroQuarto, String dataReserva) {
+        Quarto quartoEscolhido = buscarQuarto(numeroQuarto);
+
+        if (quartoEscolhido == null || !quartoEscolhido.isDisponivel()) {
+            hotelView.mensagem("O quarto " + numeroQuarto + " não está disponível.");
+            return;
+        }
 
         try {
 
-            Date dataFormatada = format.parse(dataReserva);
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+            LocalDate data = LocalDate.parse(dataReserva, formatter);
 
-            if (numeroQuarto < 1 || numeroQuarto > total_Quartos) {
-                hotelView.mensagem("Número do quarto inválido.");
-                return;
-            }
 
-            // Adicionando a verificação para evitar duplicação
-            if (temReserva(numeroQuarto)) {
-                hotelView.mensagem("O quarto " + numeroQuarto + " já está ocupado.");
-                return;
-            }
 
-            quartosDisponiveis.set(numeroQuarto - 1, false);
-            nomeHospedes.set(numeroQuarto - 1, nome);
-            dataReservas.set(numeroQuarto - 1, dataFormatada);
+            Hospede hospede = new Hospede(nome);
+            Reserva novaReserva = new Reserva(hospede, quartoEscolhido, data);
+            reservas.add(novaReserva);
 
-            hotelView.mensagem("Reserva feita para " + nome + " no quarto " + numeroQuarto + " data da reserva " + dataFormatada);
-
-        } catch (Exception e) {
-            hotelView.mensagem("Erro ao fazer a reserva: " + e.getMessage());
+            hotelView.mensagem("Reserva feita para " + nome + " no quarto " + numeroQuarto + " para " + data);
+        }catch (DateTimeParseException e){
+            hotelView.mensagem("Erro: Formato inválido na data. Use dd/MM/yyyy");
         }
     }
 
-
-    public boolean cancelarReserva(String nome, int nQuarto) {
-
-        if (temReserva(nQuarto) && (nQuarto < 1 || nQuarto > total_Quartos)) {
-            hotelView.mensagem("Nenhuma reserva encontrado par ao quarto " + nQuarto + ".");
-            return false;
+    public boolean cancelarReserva(String nome, int numeroQuarto) {
+        for (Reserva reserva : reservas) {
+            if (reserva.getHospede().getNome().equalsIgnoreCase(nome) && reserva.getQuarto().getNumero() == numeroQuarto) {
+                reserva.cancelarReserva();
+                reservas.remove(reserva);
+                hotelView.mensagem("Reserva cancelada com sucesso.");
+                return true;
+            }
         }
-        int index = nQuarto - 1;
-
-        temReserva(nQuarto);
-
-        if (!quartosDisponiveis.get(index) && nomeHospedes.get(index) != null && nomeHospedes.get(index).equalsIgnoreCase(nome)) {
-
-            quartosDisponiveis.set(index, true);
-            dataReservas.set(index, null);
-            nomeHospedes.set(index, null);
-            hotelView.mensagem("Reserva do quarto " + nQuarto + " para " + nome + " foi cancelada.");
-            return true;
-        } else {
-            hotelView.mensagem("Reserva não encontrada ou nome incorreto.");
-            return false;
-        }
+        hotelView.mensagem("Reserva não encontrada.");
+        return false;
     }
 
-    public boolean temReserva(int nQuarto) {
-        if (nQuarto < 1 || nQuarto > total_Quartos) {
-            hotelView.mensagem("Número do Quarto inválido");
-            return false;
-        }
-
-        int index = nQuarto - 1;
-
-        if (index >= quartosDisponiveis.size() || index >= nomeHospedes.size()) {
-            hotelView.mensagem("Erro: indice fora do alcance da lista");
-            return false;
-        }
-
-        return !quartosDisponiveis.get(index) && nomeHospedes.get(index) != null;
+    private Quarto buscarQuarto(int numero) {
+        return quartos.stream().filter(q -> q.getNumero() == numero).findFirst().orElse(null);
     }
 }
